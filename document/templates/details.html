@@ -1,0 +1,565 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+{% block head %}    	
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Registre Hospitalier | Details</title>
+	<link href="{% static 'patien/images/favicon1.png' %}" rel="icon">
+        <link href="{% static 'patien/images/apple-touch-icon1.png' %}" rel="apple-touch-icon">
+
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'patien/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> 
+	<!-- Fontawesome CSS -->
+	<link href="{% static 'patien/css/all.css' %}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="{% static 'patien/css/style.css' %}" rel="stylesheet">
+</head>
+
+{% endblock head %}
+
+{% block body %}
+<body>
+	<div class="wrapper-main">
+		<!-- Top Bar --
+		<div class="top-bar"> 
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="social-media">
+							<ul>
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+								<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="contact-details">
+							<ul>
+								<li><i class="fas fa-phone fa-rotate-90"></i> +01 899 286 777</li>
+								<li><i class="fas fa-map-marker-alt"></i> 8/99 , North khailkoir, NY</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'index' %}">
+					<img src="{% static 'patien/images/logo.png' %}" alt="logo" />
+				</a>
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="fas fa-bars"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'lesenregistres' %}">LES PATIENTS</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'l404' %}">4 0 4</a>
+						</li> 
+
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'logout' %}">DECONNECTION</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	
+		<!-- full Title -->
+		<div class="full-title">
+			<div class="container">
+				<!-- Page Heading/Breadcrumbs -->
+				<h1 class="mt-4 mb-3"></h1>
+				<div class="breadcrumb-main">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="{% url 'lesenregistres' %}">LES PATIENTS</a>
+						</li>
+						<li class="breadcrumb-item active">details</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Page Content -->
+		<div class="faq-main">
+			<div class="container">
+				<h2>DETAILS PATIENT</h2>
+				<div class="accordion" id="accordionExample">
+				 <form role="form" method="POST" action="{% url 'details' contact.id %}" enctype="multipart/form-data">				
+					{% csrf_token %}
+					<div class="card accordion-single">
+						<div class="card-header" id="1">
+							<h5 class="mb-0">
+								<button class="btn btn-link" type="button" data-toggle="collapse"
+									data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									NOM et PRENOMS
+								</button>
+							</h5>
+						</div>
+						<div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+							<div class="card-body">
+								<p>{{form.nom}} {{form.prenoms}}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="card accordion-single">
+						<div class="card-header" id="4">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#collapsefour" aria-expanded="false" aria-controls="collapseTwo">
+									DATE DE NAISSANCE
+								</button>
+							</h5>
+						</div>
+						<div id="collapsefour" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.date_naissance}}
+							</div>
+						</div>
+					</div>
+
+					<div class="card accordion-single">
+						<div class="card-header" id="3">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									AGE
+								</button>
+							</h5>
+						</div>
+						<div id="collapseThree" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.age}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header" id="5">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+									SEXE
+								</button>
+							</h5>
+						</div>
+						<div id="collapsefive" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.sexe}}
+							</div>
+						</div>
+					</div>
+
+					<div class="card accordion-single">
+						<div class="card-header" id="2">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									PROFESSION
+								</button>
+							</h5>
+						</div>
+						<div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.profession}}
+							</div>
+						</div>
+					</div>
+				
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c4" aria-expanded="false" aria-controls="collapseThree">
+									DOMICILE DU MALADE
+								</button>
+							</h5>
+						</div>
+						<div id="c4" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.domicile_malade}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c5" aria-expanded="false" aria-controls="collapseThree">
+									ETHNIE DU MALADE
+								</button>
+							</h5>
+						</div>
+						<div id="c5" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.ethnie}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c6" aria-expanded="false" aria-controls="collapseThree">
+									NUMERO DE TELEPHONE DU MALADE
+								</button>
+							</h5>
+						</div>
+						<div id="c6" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.telephone}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c7" aria-expanded="false" aria-controls="collapseThree">
+									GROUPE SANGUIN DU MALADE
+								</button>
+							</h5>
+						</div>
+						<div id="c7" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.groupe_sang}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c8" aria-expanded="false" aria-controls="collapseThree">
+									RESHUS
+								</button>
+							</h5>
+						</div>
+						<div id="c8" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.rhesus}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c9" aria-expanded="false" aria-controls="collapseThree">
+									ANNEE
+								</button>
+							</h5>
+						</div>
+						<div id="c9" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.année}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c10" aria-expanded="false" aria-controls="collapseThree">
+									ADDRESSE PARENT
+								</button>
+							</h5>
+						</div>
+						<div id="c10" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.adresse_parent}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c11" aria-expanded="false" aria-controls="collapseThree">
+									NOM D'URGENT
+								</button>
+							</h5>
+						</div>
+						<div id="c11" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.Nom_urgence}}
+							</div>
+						</div>
+					</div>
+
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c12" aria-expanded="false" aria-controls="collapseThree">
+									NUMERO D'URGENT
+								</button>
+							</h5>
+						</div>
+						<div id="c12" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.telephone_urgent}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c13" aria-expanded="false" aria-controls="collapseThree">
+									NOM DE L'HOPITAL
+								</button>
+							</h5>
+						</div>
+						<div id="c13" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.hopital}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c14" aria-expanded="false" aria-controls="collapseThree">
+									RESUME
+								</button>
+							</h5>
+						</div>
+						<div id="c14" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.resume}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c15" aria-expanded="false" aria-controls="collapseThree">
+									CONCLUSION
+								</button>
+							</h5>
+						</div>
+						<div id="c15" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.conclusion}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c16" aria-expanded="false" aria-controls="collapseThree">
+									DATE D'ENTREE
+								</button>
+							</h5>
+						</div>
+						<div id="c16" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.date_entree}}
+							</div>
+						</div>
+					</div>
+
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c17" aria-expanded="false" aria-controls="collapseThree">
+									DATE DE SORTIE
+								</button>
+							</h5>
+						</div>
+						<div id="c17" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.date_sortie}}
+							</div>
+						</div>
+					</div>
+					
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c18" aria-expanded="false" aria-controls="collapseThree">
+									DIAGNOSTIQUE
+								</button>
+							</h5>
+						</div>
+						<div id="c18" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.diagnostique}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c19" aria-expanded="false" aria-controls="collapseThree">
+									EXAMENS DEMANDES
+								</button>
+							</h5>
+						</div>
+						<div id="c19" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.examen}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c20" aria-expanded="false" aria-controls="collapseThree">
+									ADMISSION 
+								</button>
+							</h5>
+						</div>
+						<div id="c20" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								{{form.admission}}
+							</div>
+						</div>
+					</div>
+					<div class="card accordion-single">
+						<div class="card-header">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+									data-target="#c21" aria-expanded="false" aria-controls="collapseThree">
+									RESULTATS DES EXAMENS 
+								</button>
+							</h5>
+						</div>
+						<div id="c21" class="collapse" data-parent="#accordionExample">
+							<div class="card-body">
+								<a href="{{MEDIA_URL}}{{contact.resultat_examen.url}}">dernier examen</a>								
+								{{form.resultat_examen}}
+							</div>
+						</div>
+					</div>
+									
+						<div class="form-group col-lg-12">
+							
+								<button type="submit" class="btn btn-success" style="font-size: larger;">
+									    ENREGISTRER LA MODIFICATION
+								 </button> 
+							
+						</div>
+				 </form>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+		
+		<!-- Contact Us -->
+		<div class="touch-line">
+			<div class="container"> 
+				<div class="row">
+					<div class="col-md-8">
+					   <p>SEUL LES PERSONNELS ONT LE DROIT DE MODIFIER LE REGISTRE D'UN PATIENT.</p>
+					</div>
+					<div class="col-md-4">
+					   <a class="btn btn-lg btn-secondary btn-block" href="tel:+225-0758343332"> Contact par appel  </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!--footer starts from here-->
+		<footer class="footer">
+			<!-- <div class="container bottom_border">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6 col">
+						<h5 class="headin5_amrc col_white_amrc pt2">About Us</h5>
+						<!--headin5_amrc--
+						<p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+						<ul class="footer-social">
+							<li><a class="facebook hb-xs-margin" href="#"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>
+							<li><a class="twitter hb-xs-margin" href="#"><span class="hb hb-xs spin hb-twitter"><i class="fab fa-twitter"></i></span></a></li>
+							<li><a class="instagram hb-xs-margin" href="#"><span class="hb hb-xs spin hb-instagram"><i class="fab fa-instagram"></i></span></a></li>
+							<li><a class="googleplus hb-xs-margin" href="#"><span class="hb hb-xs spin hb-google-plus"><i class="fab fa-google-plus-g"></i></span></a></li>
+							<li><a class="dribbble hb-xs-margin" href="#"><span class="hb hb-xs spin hb-dribbble"><i class="fab fa-dribbble"></i></span></a></li>
+						</ul>
+					</div>	
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+						<!--headin5_amrc--
+						<ul class="footer_ul_amrc">
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Default Version</a></li>
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Boxed Version</a></li>
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Team </a></li>
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>About Us</a></li>
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Services</a></li>
+							<li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Get In Touch</a></li>
+						</ul>
+						<!--footer_ul_amrc ends here--
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 col">
+						<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+						<!--headin5_amrc ends here--
+						<ul class="footer_ul2_amrc">
+							<li>
+								<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+								<p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+							</li>
+							<li>
+								<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+								<p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+							</li>
+							<li>
+								<a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a>
+								<p>Lorem Ipsum is simply dummy...<a href="#">https://www.lipsum.com/</a></p>
+							</li>
+						</ul>
+						<!--footer_ul2_amrc ends here--
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 ">
+						<div class="news-box">
+							<h5 class="headin5_amrc col_white_amrc pt2">Newsletter</h5>
+							<p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+							<form action="#">
+								<div class="input-group">
+									<input class="form-control" placeholder="Search for..." type="text">
+									<span class="input-group-btn">
+									  <button class="btn btn-secondary" type="button">Go!</button>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="container">
+				<p class="copyright text-center">All Rights Reserved. &copy; 2021 <a href="{% url 'index' %}">Etat de </a> Côte d'Ivoire 
+				</p>
+			</div>
+		</footer>
+	</div>
+    <!-- Bootstrap core JavaScript -->
+	<script src="{% static 'patien/vendor/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'patien/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'patienjs/jquery.appear.js/' %}"></script>
+	<script src="{% static 'patien/js/script.js' %}"></script>
+</body>
+{% endblock body %}
+</html>

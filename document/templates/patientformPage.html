@@ -1,0 +1,255 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Registre Hospitalier | Enregistrement</title>
+    <link href="{% static 'patien/images/favicon1.png' %}" rel="icon">
+    <link href="{% static 'patien/images/apple-touch-icon1.png' %}" rel="apple-touch-icon">
+
+    <!-- Bootstrap Core CSS --> 
+    <link href="{% static 'css/bootstrap.mine.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/business-casual.css' %}" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <div class="container">
+        
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                </div>
+                
+                <div class="col-md-8">
+                    <p>
+                        <strong>MINISTERE DE LA SANTE ET <br> DE L'HYGIENNE  PUBLIQUE</strong>
+                        <br>
+                        <img src="{% static 'images/docteur.jpg' %}" alt=""> <br>
+                        <strong>
+                            <!--<form method="POST" action="patientformPage" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                          <label for="Type">HOPITAL</label>
+                                          <select class="form-control form-control-lg form-control-a" id="Type">
+                                            {% for hopital in hopitals %}
+                                            <option>{{hopital.nom}}</option>
+                                            {% endfor %}
+                                          </select>
+                                        </div>
+                                      </div>
+                                </div>
+                            </form>-->
+                        </strong>
+                    </p>
+                    <!-- Embedded Google Map using an iframe - to select your location find it on Google maps and paste the link as the iframe src. If you want to use the Google Maps API instead then have at it! 
+                    <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>-->
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <strong>REPUBLIQUE DE CÔTE D'IVOIRE</strong>
+                    </p>
+                    
+                    <p>
+                        <strong>Union-Discipline-Travail </strong>
+                    </p>
+                    <p>
+                        <strong>+225 0758343332 </strong>
+                    </p>
+                    <p>
+                        <strong>+225 0585895451</strong>
+                    </p>
+                    <p>
+                        <strong>honorefare@gmail.com</strong>
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">CAHIER
+                        <strong> D'OBSERVATION DE MALADES</strong>
+                    </h2>
+                    <hr>
+                    <p></p>
+                    <form role="form" method="POST" action="patientformPage" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="">
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.nom.label}}</h4>
+                                {{form.nom}}
+                            </div>
+                            
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.prenoms.label}}</h4>
+                                {{form.prenoms}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.sexe.label}}</h4>
+                                {{form.sexe}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.profession.label}}</h4>
+                                {{form.profession}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.age.label}}</h4>
+                                {{form.age}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.domicile_malade.label}}</h4>
+                                {{form.domicile_malade}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.ethnie.label}}</h4>
+                                {{form.ethnie}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.telephone.label}}</h4>
+                                {{form.telephone}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.groupe_sang.label}}</h4>
+                                {{form.groupe_sang}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.rhesus.label}}</h4>
+                                {{form.rhesus}}
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.année.label}}</h4>
+                                {{form.année}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.date_naissance.label}}</h4>
+                                {{form.date_naissance}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.lieu_naissance.label}}</h4>
+                                {{form.lieu_naissance}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.adresse_parent.label}}</h4>
+                                {{form.adresse_parent}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.Nom_urgence.label}}</h4>
+                                {{form.Nom_urgence}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.telephone_urgent.label}}</h4>
+                                {{form.telephone_urgent}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.hopital.label}}</h4>
+                                {{form.hopital}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.resume.label}}</h4>
+                                {{form.resume}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.conclusion.label}}</h4>
+                                {{form.conclusion}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.date_entree.label}}</h4>
+                                {{form.date_entree}}
+                            </div> 
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.date_sortie.label}}</h4>
+                                {{form.date_sortie}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.admission.label}}</h4>
+                                {{form.admission}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.diagnostique.label}}</h4>
+                                {{form.diagnostique}}
+                            </div> 
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.examen.label}}</h4>
+                                {{form.examen}}
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <h4>{{form.resultat_examen.label}}</h4>
+                                {{form.resultat_examen}}
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="form-group col-lg-12">
+                                <input type="hidden" name="save" value="patientformPage">
+                                <button type="submit" class="btn btn-success" style="font-size: larger;">ENREGISTRER</button>
+                            </div>                           
+                            <div class="form-group col-lg-12" hidden>
+                                <div class="address-bar" hidden>Abidjan :Codody saint jean | Côte d'Ivoire | 85.89.54.51</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Alpha services 2019</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
